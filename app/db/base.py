@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 from app.core.config import settings
 
-engine = create_async_engine(settings.DATABASE_URL)
+engine = create_async_engine(url= settings.DATABASE_URL_asyncpg,echo=True)
 
 class Base(DeclarativeBase):
     pass
