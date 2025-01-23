@@ -1,12 +1,13 @@
 import asyncio
 from logging.config import fileConfig
-from app.db.base import Base
+from app.core.config import settings
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
-from app.core.config import settings
 
 from alembic import context
+
+from app.db.base import Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -23,7 +24,6 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 target_metadata =  Base.metadata
 config.set_main_option("sqlalchemy.url",settings.DB_URL)
-
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
